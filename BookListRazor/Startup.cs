@@ -1,6 +1,8 @@
+using BookListRazor.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -9,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BookListRazord
+namespace BookListRazor
 {
     public class Startup
     {
@@ -24,6 +26,8 @@ namespace BookListRazord
         //This is where you configure your dependency injection. 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(option =>
+            option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddRazorPages();
         }
 
