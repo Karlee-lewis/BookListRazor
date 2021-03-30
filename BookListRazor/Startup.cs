@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BookListRazor
+namespace BookListRazord
 {
     public class Startup
     {
@@ -21,12 +21,14 @@ namespace BookListRazor
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        //This is where you configure your dependency injection. 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        //PIPELINE | Auth | MVC | Static Files
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
